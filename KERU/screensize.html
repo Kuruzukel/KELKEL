@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewport Size</title>
+    <style>
+
+        /* For devices with a viewport width of 600px or less */
+@media (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
+
+/* For devices with a viewport width between 600px and 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        background-color: lightgreen;
+    }
+}
+
+/* For devices with a viewport width greater than 1024px */
+@media (min-width: 1025px) {
+    body {
+        background-color: lightcoral;
+    }
+}
+
+    </style>
+    <script>
+        function showViewportSize() {
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            alert('Viewport size: ' + width + ' x ' + height + ' pixels');
+        }
+
+        window.onload = showViewportSize;
+        window.onresize = showViewportSize;
+    </script>
+</head>
+<body>
+    <h1>Check Viewport Size</h1>
+</body>
+</html>
