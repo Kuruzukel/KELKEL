@@ -197,6 +197,7 @@ td{
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    
 }
 
 .grades-table th, .grades-table td {
@@ -481,7 +482,9 @@ select {
 
 <?php
 if (count($grades) > 0) {
+    
     echo '<div class="table-container">';
+    echo '<div style="overflow-x:auto;">';
     echo '<div class="desktop-view">';
     echo '<table class="grades-table">';
     echo '<tr>
@@ -519,6 +522,8 @@ if (count($grades) > 0) {
     echo '</table>';
     echo '</div>';
     echo '</div>';
+    echo '</div>';
+
 
 } else {
 
