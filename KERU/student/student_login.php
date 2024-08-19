@@ -244,15 +244,15 @@ $connection->close();
         margin-top: 2rem;
     }
     .error-message {
-    color: rgb(154, 42, 42);
+    color: white;
     font-size: 1rem;
-    margin-top: 1px;
+    margin-top: 5px;
     margin-bottom: -20px;
     text-align: center;
-    background-color: pink;
+    background-color: rgba(250, 0, 0, 0.2);
     padding: 10px;
-    border-radius: 15px;
-
+    border-radius: 5px;
+    border: 3px darkred solid;
     opacity: 0; /* Initial opacity */
     transition: opacity 1s ease-in-out; /* Transition for fade-in and fade-out */
     visibility: hidden; /* Hidden by default */
@@ -273,12 +273,10 @@ $connection->close();
         margin-top: 2rem;
         }
         .error-message {
-    color: rgb(154, 42, 42);
+   
     font-size: 1rem;
-    margin-top: 1px;
     margin-bottom: -20px;
     text-align: center;
-    background-color: pink;
     padding: 10px;
     border-radius: 15px;
     

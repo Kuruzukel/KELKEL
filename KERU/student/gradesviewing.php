@@ -126,12 +126,15 @@ if ($student_id_result->num_rows > 0) {
     
 }
 .container {
-    background-image: url('../PP5.png');
+    background-image: url('../PP1.png');
     background-size: 100% 100%; /* Scales the image to fit the container exactly */
     background-position: center;
     background-color: rgba(211, 211, 211, 0.5);
     border-radius: 20px;
 }
+
+
+
 
 form {
     display: flex;
@@ -156,18 +159,20 @@ input[type="submit"] {
     padding: 0 10px;
     font-size: 1rem;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 13, 140, 1);
     color: white;
     border: none;
     border-radius: 5px;
-    width: 28%;
+    width: 40%;
+    margin-bottom: 0.5px;
 }
 table{
     color: white;
+    z-index: 5;
 }
 td{
     
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     
 }
 .student-table {
@@ -308,13 +313,14 @@ body {
             }
 
             .force-landscape-message h2 {
-                font-size: 25px;
+                font-size: 10rem;
                 font-weight: bold;
                 text-align: center;
                 color: black;
                 margin-bottom: 10px;
                 margin-left: -30px;
                 margin-top: 40px;
+                overflow: hidden;
             }
         }
 
@@ -354,7 +360,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-    width: 50%;
+    width: 30%;
 }
 
 /* Form group styling */
@@ -372,7 +378,8 @@ label {
 
 select {
     height: 2.5rem;
-    padding: 5px;
+    width: 9rem;
+    padding: 1px;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -390,14 +397,24 @@ select {
     border: none;
     border-radius: 5px;
 }
-
+.no-grades{
+    color: white;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: -20px;
+    text-align: center;
+    background-color: rgba(250, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px darkred solid;
+}
 
     </style>
 </head>
 
 <!-- <h1>Grades Viewing</h1> -->
 <div class="force-landscape-message">
-    <h2 style="margin-top:80px;">⟬ Reminder ⟭</h2>
+    <p style="margin-top:80px; font-size:30px;">Reminder</p>
     <p style="margin-top:30px;">Please rotate your device to landscape mode to view the content.</p>
     <br><img style="width: 100px; height: 100px" src="../PP69.png" alt="">
 </div>
@@ -410,36 +427,43 @@ select {
 
 <div class="flex-container">
     
-<form method="GET" action="" class="filter-form">
-    <div class="form-group">
-        <label for="acadyear">Academic Year:</label>
-        <select name="acadyear" id="acadyear">
-            <?php while ($acadyear_row = $acadyear_result->fetch_assoc()) { ?>
-                <option value="<?php echo htmlspecialchars($acadyear_row['acadyear']); ?>" <?php echo ($selected_acadyear == $acadyear_row['acadyear']) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($acadyear_row['acadyear']); ?>
-                </option>
-            <?php } ?>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <label for="semester">Semester:</label>
-        <select name="semester" id="semester">
-            <?php while ($semester_row = $semester_result->fetch_assoc()) { ?>
-                <option value="<?php echo htmlspecialchars($semester_row['semester']); ?>" <?php echo ($selected_semester == $semester_row['semester']) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($semester_row['semester']); ?>
-                </option>
-            <?php } ?>
-        </select>
-    </div>
-    
-    <input type="submit" value="Filter" class="submit-button">
-</form>
+
 
 
             
    
     <table class="student-table">
+    <form method="GET" action="" class="filter-form">
+    <div class="form-group">
+        <tr>
+            <th>ECA GRADING SYSTEM</th>
+            <td><input type="submit" value="Filter" class="submit-button">
+</tr></td>
+<tr>
+        <th><label for="acadyear">Academic Year:</label></th>
+        <td><select name="acadyear" id="acadyear">
+            <?php while ($acadyear_row = $acadyear_result->fetch_assoc()) { ?>
+                <option value="<?php echo htmlspecialchars($acadyear_row['acadyear']); ?>" <?php echo ($selected_acadyear == $acadyear_row['acadyear']) ? 'selected' : ''; ?>>
+                    <?php echo htmlspecialchars($acadyear_row['acadyear']); ?>
+                </option>
+            <?php } ?>
+        </select></td></tr>
+    </div>
+    
+    <div class="form-group">
+    <tr>
+    <th><label for="semester">Semester:</label></th>
+        <td><select name="semester" id="semester">
+            <?php while ($semester_row = $semester_result->fetch_assoc()) { ?>
+                <option value="<?php echo htmlspecialchars($semester_row['semester']); ?>" <?php echo ($selected_semester == $semester_row['semester']) ? 'selected' : ''; ?>>
+                    <?php echo htmlspecialchars($semester_row['semester']); ?>
+                </option>
+            <?php } ?>
+        </select></td></tr>
+    </div>
+    
+    
+</form>
         <tr>
             <th>Student ID:</th>
             <td><?php echo htmlspecialchars($student_id); ?></td>
@@ -471,36 +495,39 @@ if (count($grades) > 0) {
             <th>Status</th>
           </tr>';
 
-          foreach ($grades as $subject => $rows) {
-            foreach ($rows as $row) {
-                echo '<tr>';
-                
-                // Extract and display only the "IS 8" portion
-                $subject_parts = explode(' - ', $row['subject']);
-                $cleaned_subject = $subject_parts[0]; // Get the part before the dash
-                
-                echo '<td>' . htmlspecialchars($cleaned_subject) . '</td>';
-                echo '<td>' . htmlspecialchars(preg_replace('/[^A-Z.]/', '', $row['instructor'])) . '</td>';
+    foreach ($grades as $subject => $rows) {
+        foreach ($rows as $row) {
+            echo '<tr>';
+            
+            // Extract and display only the "IS 8" portion
+            $subject_parts = explode(' - ', $row['subject']);
+            $cleaned_subject = $subject_parts[0]; // Get the part before the dash
+            
+            echo '<td>' . htmlspecialchars($cleaned_subject) . '</td>';
+            echo '<td>' . htmlspecialchars(preg_replace('/[^A-Z.]/', '', $row['instructor'])) . '</td>';
 
-                echo '<td>' . round($row['prelim'], 2) . '</td>';
-                echo '<td>' . round($row['midterm'], 2) . '</td>';
-                echo '<td>' . round($row['finals'], 2) . '</td>';
-                echo '<td>' . htmlspecialchars(round($row['totalave'],2)) . '</td>';
-                echo '<td>' . htmlspecialchars($row['gradescale']) . '</td>';
-                echo '<td>' . ($row['status'] == 'Incomplete' ? '<span class="incomplete">YOUR INCOMPLETE</span>' : htmlspecialchars($row['status'])) . '</td>';
-                echo '</tr>';
-            }
+            echo '<td>' . round($row['prelim'], 2) . '</td>';
+            echo '<td>' . round($row['midterm'], 2) . '</td>';
+            echo '<td>' . round($row['finals'], 2) . '</td>';
+            echo '<td>' . htmlspecialchars(round($row['totalave'], 2)) . '</td>';
+            echo '<td>' . htmlspecialchars($row['gradescale']) . '</td>';
+            echo '<td>' . ($row['status'] == 'Incomplete' ? '<span class="incomplete">YOUR INCOMPLETE</span>' : htmlspecialchars($row['status'])) . '</td>';
+            echo '</tr>';
         }
-        
+    }
+    
     echo '</table>';
     echo '</div>';
     echo '</div>';
 
-    
 } else {
-    echo "<p class='nograde'>No grades available.</p>";
+
+    echo '<p class="no-grades">No grades available.</p>';
+
+
 }
 ?>
+
 </div>
 </div>
 

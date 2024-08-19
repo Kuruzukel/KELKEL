@@ -2,6 +2,8 @@
 session_start();
 include('../connection.php');
 
+// Initialize error message variable
+$error_message = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -16,13 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         $_SESSION['username'] = $username;
-        
-        
+    
             // Redirect to Studdash.php if first_login is not 0
-            header("Location: addash.php");
+            header("Location: Addash.php");
             exit;
-    } else {
-        echo "";
+        }
+     else {
+        // Set error message if login fails
+        $error_message = "Invalid Username or Password.";
     }
 
     $stmt->close();
@@ -186,13 +189,33 @@ $connection->close();
         background: url(../PP5.png);
         background-size: contain;
     }
+    .secret-login{
+        position: fixed;
+    top: 50px;
+    text-align: center;
+    opacity: 0;
+    cursor: default;
+    background: red;
+    }
+    .secret-login a:hover{
+        cursor: default;
 
+    }
+    .secret-login:hover{
+        cursor: default;
+
+    }
+    @media screen and (max-width:801px) {
+        .secret-login{
+            top: 28px;
+        }
+    }
     @media screen and (max-width:920px) {
         .loginCard {
             width: 90%;
             padding-inline: 2rem;
+ 
         }
-        
     }
     @media screen and (max-width:550px) {
         .title {
@@ -215,10 +238,45 @@ $connection->close();
     .pass.field {
         margin-top: 2rem;
     }
+    .error-message {
+    color: white;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: -20px;
+    text-align: center;
+    background-color: rgba(250, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px darkred solid;
+    opacity: 0; /* Initial opacity */
+    transition: opacity 1s ease-in-out; /* Transition for fade-in and fade-out */
+    visibility: hidden; /* Hidden by default */
+}
+.error-message.show {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Ensure visibility */
+}
     @media screen and (max-width:465px) {
         .title {
             font-size: 2rem;
         }
+        .subtitle {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: white;
+        margin-top: 2rem;
+        }
+        .error-message {
+   
+    font-size: 1rem;
+    margin-bottom: -20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    
+}
+        
         .loginCard {
             justify-content: flex-start;
             height: 95vh;
@@ -229,15 +287,7 @@ $connection->close();
             height: 8rem;
             width: 8rem;
         }
-        .subtitle {
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.5rem;
-        color: white;
-        margin-top: 2rem;
-     
-    }
-    .field {
+        .field {
         width: 15rem;
     }
     .user.field {
@@ -246,20 +296,25 @@ $connection->close();
     .pass.field {
         margin-top: 2rem;
     }
+    
     }
+
+
 </style>
 <body>
     <div class="loginCard">
         <p class="title">BSIS GRADING SYSTEM</p>
         <p class="subtitle">Admin Login</p>
-
+        <?php if (!empty($error_message)): ?>
+    <div id="error-message" class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
+<?php endif; ?>
         <form method="POST" action="">
         <div class="user field">
             <div class="handle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="#FFFFFF" d="M11 2a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 11c-2.395 0-4.575.694-6.178 1.672c-.8.488-1.484 1.064-1.978 1.69C2.358 16.976 2 17.713 2 18.5c0 .845.411 1.511 1.003 1.986c.56.45 1.299.748 2.084.956C6.665 21.859 8.771 22 11 22l.685-.005a1 1 0 0 0 .89-1.428A6 6 0 0 1 12 18c0-1.252.383-2.412 1.037-3.373a1 1 0 0 0-.72-1.557Q11.671 13 11 13m9.616 2.469a1 1 0 1 0-1.732-1l-.336.582a3 3 0 0 0-1.097-.001l-.335-.581a1 1 0 1 0-1.732 1l.335.58a3 3 0 0 0-.547.951H14.5a1 1 0 0 0 0 2h.671a3 3 0 0 0 .549.95l-.336.581a1 1 0 1 0 1.732 1l.336-.581c.359.066.73.068 1.097 0l.335.581a1 1 0 1 0 1.732-1l-.335-.58c.242-.284.426-.607.547-.951h.672a1 1 0 1 0 0-2h-.671a3 3 0 0 0-.549-.95z"/></g></svg>
                 <p>Username:</p>
             </div>
-            <input name="username" id="idInput" type="text" placeholder="Username" autocomplete="off" required maxlength="8">
+            <input name="username" id="idInput" type="text" placeholder="Username" maxlength="16" autocomplete="off">
         </div>
 
         <div class="pass field">
@@ -281,14 +336,17 @@ $connection->close();
         </div>
 
         <button type="submit">Login</button>
+        
+
         <div class="logoContainer">
 
         </div>
+    
 
 
 
-
-   
+        </form>
+    </div>
 </body>
 <script>
 
@@ -305,6 +363,26 @@ $connection->close();
             passInput.type = 'password'
         }
     }
+
+    function limitID() {
+        if (idInput.value.length > 4){
+            idInput.value = idInput.value.slice(0,4);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    const errorMessage = document.querySelector('.error-message');
+
+    function showErrorMessage() {
+        errorMessage.classList.add('show');
+        setTimeout(() => {
+            errorMessage.classList.remove('show');
+        }, 3000); // Keep the message visible for 3 seconds before fading out
+    }
+
+    <?php if (!empty($error_message)): ?>
+        showErrorMessage();
+    <?php endif; ?>
+});
 
 </script>
 </html>

@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .container {
             position: relative;
             max-width: 100%;
-            background-color: rgba(211, 211, 211, 0.5);
+            background-color: rgba(211, 211, 211, 0.9);
             color: white;
             text-align: center;
             border-radius: 20px;
