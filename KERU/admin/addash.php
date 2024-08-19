@@ -217,7 +217,18 @@
 header h3 {
     font-size: 2rem;
 }
-
+#success-message {
+    color: white;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: -20px;
+    text-align: center;
+    background-color: rgba(0, 128, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px darkgreen solid;
+    
+}
     </style>
 </head>
 <body>
