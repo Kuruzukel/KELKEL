@@ -86,8 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .container {
             position: relative;
             max-width: 100%;
-            background-color: rgba(211, 211, 211, 0.9);
-            color: white;
+            background-color: rgba(255, 255, 255, 0.6);
+            color: black;
             text-align: center;
             border-radius: 20px;
         }
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     button{
         
         transition: 0.3s;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.8);
         height: 4rem;
         width: 30%;
         color: white;

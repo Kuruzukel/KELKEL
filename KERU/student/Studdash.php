@@ -197,6 +197,7 @@ session_start();
       box-sizing: border-box;
     }
     
+    
 header h3 {
     font-size: 2rem;
 }
@@ -318,7 +319,7 @@ header h3 {
     </header>
     <main>
         <div class="sidebar closed">
-        <img src="../PP5.png" alt="Logo" class="logoadmin">
+        <img src="../P2.png" alt="Logo" class="logoadmin">
         <div class="line"></div>
             <a href="Studdash.php?page=grades" class="tab" id="grades-tab"><i class="fas fa-graduation-cap"></i> Grades Viewing</a>
             <a href="Studdash.php?page=password" class="tab" id="password-tab"><i class="fas fa-key"></i> Change my password</a>

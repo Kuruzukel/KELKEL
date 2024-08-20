@@ -253,7 +253,7 @@ header h3 {
     </header>
     <main>
         <div class="sidebar closed">
-        <img src="../PP5.png" alt="Logo" class="logoadmin">
+        <img src="../P2.png" alt="Logo" class="logoadmin">
         <div class="line"></div>
             <a href="addash.php?page=grades" class="tab" id="grades-tab"><i class="fas fa-upload"></i> Grades Upload</a>
             <a href="addash.php?page=password" class="tab" id="password-tab"><i class="fas fa-user-lock"></i> Student Accounts</a>

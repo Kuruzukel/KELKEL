@@ -191,7 +191,7 @@ $connection->close();
         width: 13rem;
         /* background-color: red; */
         margin-top: 2rem;
-        background: url(../PP5.png);
+        background: url(../P2.png);
         background-size: contain;
     }
     .secret-login{

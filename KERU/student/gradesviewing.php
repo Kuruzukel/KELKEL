@@ -126,10 +126,10 @@ if ($student_id_result->num_rows > 0) {
     
 }
 .container {
-    background-image: url('../PP1.png');
+    background-image: url('../P4.png');
     background-size: 100% 100%; /* Scales the image to fit the container exactly */
     background-position: center;
-    background-color: rgba(211, 211, 211, 0.5);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
 }
 
@@ -146,6 +146,7 @@ form {
 label {
     font-weight: bold;
     margin-right: 10px;
+    height: 1px;
 }
 
 select {
@@ -155,24 +156,24 @@ select {
 }
 
 input[type="submit"] {
-    height: 2.5rem;
+    height: 20px;
     padding: 0 10px;
-    font-size: 1rem;
+    font-size: 15px;
     cursor: pointer;
-    background-color: rgba(0, 13, 140, 1);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border: none;
     border-radius: 5px;
-    width: 40%;
+    width: 35%;
     margin-bottom: 0.5px;
 }
 table{
-    color: white;
+    color: black;
     z-index: 5;
 }
 td{
-    
-    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0);
     
 }
 .student-table {
@@ -184,13 +185,13 @@ td{
 }
 
 .student-table th, .student-table td {
-    border: 2px solid #a4a4a4;
-    padding: 10px;
+    border: 2.5px solid #000000;
+    padding: 8px;
     text-align: center;
 }
 
 .student-table th {
-    background-color: rgba(0, 0, 0, 1);
+    background-color:rgba(0, 0, 0, 0);
 }
 
 .grades-table {
@@ -201,13 +202,13 @@ td{
 }
 
 .grades-table th, .grades-table td {
-    border: 2px solid #a4a4a4;
+    border: 2.5px solid #000000;
     padding: 10px;
     text-align: center;
 }
 
 .grades-table th {
- background-color: rgba(0, 0, 0, 1);
+ background-color: rgba(0, 0, 0, 0);
 }
 /* .acadfilter{
     background-color: rgba(0, 0, 0, 1);
@@ -347,7 +348,7 @@ body {
     
 }
 .acadfilter {
-    background-color: #f0f0f0; /* Light gray background color */
+    background-color: #000000; /* Light gray background color */
     padding: 20px; /* Add some padding around the form */
     border-radius: 8px; /* Optional: round the corners of the background */
 }
@@ -369,17 +370,22 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    
+}
+.form-group th {
+    height: 10px;
 }
 
 label {
-    color: white;
+    color: black;
     font-weight: bold;
     margin-bottom: 5px;
+    margin-top: -8px;
 }
 
 select {
-    height: 2.5rem;
-    width: 9rem;
+    height: 23px;
+    width: 8rem;
     padding: 1px;
     font-size: 1rem;
     border-radius: 5px;
@@ -409,7 +415,9 @@ select {
     border-radius: 5px;
     border: 3px darkred solid;
 }
-
+.eca-title{
+    height: 5px;
+}
     </style>
 </head>
 
@@ -417,7 +425,7 @@ select {
 <div class="force-landscape-message">
     <p style="margin-top:80px; font-size:30px;">Reminder</p>
     <p style="margin-top:30px;">Please rotate your device to landscape mode to view the content.</p>
-    <br><img style="width: 100px; height: 100px" src="../PP69.png" alt="">
+    <br><img style="width: 100px; height: 100px" src="../P69.png" alt="">
 </div>
 
 <div class="whole-content">
@@ -437,7 +445,7 @@ select {
     <form method="GET" action="" class="filter-form">
     <div class="form-group">
         <tr>
-            <th>ECA GRADING SYSTEM</th>
+            <th class="eca-title">ECA GRADING SYSTEM</th>
             <td><input type="submit" value="Filter" class="submit-button">
 </tr></td>
 <tr>
