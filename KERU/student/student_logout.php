@@ -9,17 +9,17 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-if (isset($_SESSION['username'])) {
-    $session_id = $_SESSION['username'];
+if (isset($_SESSION['student_id'])) {
+    $session_id = $_SESSION['student_id'];
 
-    $stmt = $pdo->prepare("DELETE FROM session_list WHERE user_id = :username");
-    $stmt->bindParam(':username', $session_id);
+    $stmt = $pdo->prepare("DELETE FROM session_list WHERE user_id = :student_id");
+    $stmt->bindParam(':student_id', $session_id);
     $stmt->execute();
 
     session_unset();
     session_destroy();
 }
 
-header("Location: admin_login.php"); 
+header("Location: student_login.php"); 
 exit();
 ?>

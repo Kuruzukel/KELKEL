@@ -18,21 +18,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         $_SESSION['student_id'] = $student_id;
-        
+        $session_id = session_id();
+        $log_stmt = $connection->prepare("INSERT INTO session_list (user_id, session_id) VALUES (?, ?)");
+        $log_stmt->bind_param("ss", $student_id, $session_id);
+        $log_stmt->execute();
+        $log_stmt->close();
+    
         if ($user['first_login'] == 0) {
-            // Redirect to pass.php if first_login is 0
             header("Location: changepasslogin.php");
             exit;
         } else {
-            // Redirect to Studdash.php if first_login is not 0
             header("Location: Studdash.php");
             exit;
         }
     } else {
-        // Set error message if login fails
         $error_message = "Invalid Student ID or Password.";
     }
+    
 
+    
     $stmt->close();
 }
 

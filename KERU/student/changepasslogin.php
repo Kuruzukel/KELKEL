@@ -210,6 +210,7 @@ $connection->close();
     .pass.field {
         margin-top: 2rem;
     }
+}
     @media screen and (max-width:465px) {
         .title {
             font-size: 2rem;
@@ -240,7 +241,7 @@ $connection->close();
     .pass.field {
         margin-top: 2rem;
     }
-
+    }
 </style>
 <body>
     <div class="loginCard">

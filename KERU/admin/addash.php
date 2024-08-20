@@ -1,4 +1,8 @@
+<?php
+session_start();
+include('session_detector2.php');
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +96,7 @@
             width: 0;
             margin-right: 0;
         }
-        .sidebar.closed .logoadmin,
+        .sidebar.closed .logoadmin
          {
          left: -200px;
         opacity: 0;
@@ -259,6 +263,7 @@ header h3 {
             <a href="addash.php?page=password" class="tab" id="password-tab"><i class="fas fa-user-lock"></i> Student Accounts</a>
 
             <a href="admin_logout.php" class="tab" id="logout-tab"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
         </div>
         <div class="scroll-container" id="scrollContainer">
         <div class="contents" id="content">

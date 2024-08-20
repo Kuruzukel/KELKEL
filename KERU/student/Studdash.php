@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 session_start();
 
 ?>
@@ -93,7 +94,7 @@ session_start();
             width: 0;
             margin-right: 0;
         }
-        .sidebar.closed .logoadmin,
+        .sidebar.closed .logoadmin
          {
          left: -200px;
         opacity: 0;
@@ -278,10 +279,9 @@ header h3 {
             width: 90%;
             margin-left: 18px;
             color: #fff;
-            
-    }a
+    }
+    }
     @media screen and (orientation: landscape) and (max-width: 1023px) {
-        /* Show content in landscape mode for smaller devices */
         #logout-tab {
             background-color: rgb(205,60,60);
             bottom: 30rem;
@@ -291,12 +291,11 @@ header h3 {
             width: 90%;
             margin-right: 5%;
             color: #fff;
-            
+        }
 }
-    }
-    }
     </style>
 </head>
+
 <body>
     <header>
         <div class="menu-container">
@@ -323,7 +322,8 @@ header h3 {
         <div class="line"></div>
             <a href="Studdash.php?page=grades" class="tab" id="grades-tab"><i class="fas fa-graduation-cap"></i> Grades Viewing</a>
             <a href="Studdash.php?page=password" class="tab" id="password-tab"><i class="fas fa-key"></i> Change my password</a>
-            <a href="../student/student_login.php" class="tab" id="logout-tab"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="student_logout.php" class="tab" id="logout-tab"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
         </div>
         <div class="scroll-container" id="scrollContainer">
         <div class="contents" id="content">

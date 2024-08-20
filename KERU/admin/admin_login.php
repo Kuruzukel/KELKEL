@@ -2,14 +2,12 @@
 session_start();
 include('../connection.php');
 
-// Initialize error message variable
 $error_message = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Prepare and execute the query to include the first_login field
     $stmt = $connection->prepare("SELECT * FROM admin_tbl WHERE username = ? AND password = ?");
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
@@ -18,13 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         $_SESSION['username'] = $username;
-    
-            // Redirect to Studdash.php if first_login is not 0
-            header("Location: Addash.php");
-            exit;
-        }
-     else {
-        // Set error message if login fails
+
+        $session_id = session_id();
+
+        $insert_stmt = $connection->prepare("INSERT INTO session_list (user_id, session_id) VALUES (?, ?)");
+        $insert_stmt->bind_param("ss", $_SESSION['username'], $session_id);
+        $insert_stmt->execute();
+        $insert_stmt->close();
+
+        header("Location: Addash.php");
+        exit;
+    } else {
         $error_message = "Invalid Username or Password.";
     }
 
@@ -248,13 +250,13 @@ $connection->close();
     padding: 10px;
     border-radius: 5px;
     border: 3px darkred solid;
-    opacity: 0; /* Initial opacity */
-    transition: opacity 1s ease-in-out; /* Transition for fade-in and fade-out */
-    visibility: hidden; /* Hidden by default */
+    opacity: 0; 
+    transition: opacity 1s ease-in-out; 
+    visibility: hidden; 
 }
 .error-message.show {
-    opacity: 1; /* Fully visible */
-    visibility: visible; /* Ensure visibility */
+    opacity: 1; 
+    visibility: visible; 
 }
     @media screen and (max-width:465px) {
         .title {

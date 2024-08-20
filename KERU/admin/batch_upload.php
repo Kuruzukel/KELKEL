@@ -1,6 +1,7 @@
 <?php
 session_start(); // Start the session
 include('../connection.php');
+include('session_detector2.php');
 
 if (isset($_POST["submit"])) {
     $file = $_FILES['file']['tmp_name'];

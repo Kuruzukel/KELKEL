@@ -1,6 +1,6 @@
 <?php
 include('../connection.php');
-
+include('session_detector.php');
 if (!isset($_SESSION['student_id'])) {
     echo "You must be logged in to view grades.";
     exit;

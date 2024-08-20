@@ -1,7 +1,7 @@
 <?php
 
 include('../connection.php');
-
+include('session_detector.php');
 // Redirect to login if not logged in
 if (!isset($_SESSION['student_id'])) {
     header("Location: login.php");
@@ -150,6 +150,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin-top: 10px;
         }
         }
+        .error{
+    color: white;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: -20px;
+    text-align: center;
+    background-color: rgba(250, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px darkred solid;
+    opacity: 0; /* Initial opacity */
+    transition: opacity 1s ease-in-out; /* Transition for fade-in and fade-out */
+    visibility: hidden; /* Hidden by default */
+}
     </style>
 </head>
 <body>
