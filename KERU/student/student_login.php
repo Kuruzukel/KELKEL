@@ -51,7 +51,7 @@ $connection->close();
         box-sizing: border-box;
     }
     body{
-        background-image: url(../PP3.jpg);
+        background-image: url(../P3.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
