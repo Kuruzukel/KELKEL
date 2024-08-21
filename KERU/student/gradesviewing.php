@@ -126,13 +126,12 @@ if ($student_id_result->num_rows > 0) {
     
 }
 .container {
-    background-image: url('../P4.png');
-    background-size: 100% 100%; /* Scales the image to fit the container exactly */
+    background: url('../P4.png')no-repeat center center;
+    background-size: 100% 80%; /* Scales the image to fit the container exactly */
     background-position: center;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
 }
-
 
 
 
@@ -431,6 +430,7 @@ select {
 <div class="whole-content">
 
 <div class="container">
+
 
 
 
