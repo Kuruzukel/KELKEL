@@ -202,7 +202,7 @@ td{
 
 .grades-table th, .grades-table td {
     border: 2.5px solid #000000;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
 }
 
