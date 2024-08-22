@@ -127,7 +127,7 @@ if ($student_id_result->num_rows > 0) {
 }
 .container {
     background: url('../P4.png')no-repeat center center;
-    background-size: 100% 80%; /* Scales the image to fit the container exactly */
+    background-size: 60% 107%; /* Scales the image to fit the container exactly */
     background-position: center;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
@@ -269,6 +269,15 @@ body {
             .force-landscape-message {
                 display: none; /* Hide message */
             }
+        }
+        @media screen and (orientation: landscape) and (max-width: 1024px) {
+            .container {
+            background: url('../P4.png')no-repeat center center;
+            background-size: 100% 100%; /* Scales the image to fit the container exactly */
+            background-position: center;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 20px;
+        }
         }
 
         @media screen and (max-width: 740px) {
