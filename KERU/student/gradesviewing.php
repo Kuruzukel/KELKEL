@@ -127,7 +127,7 @@ if ($student_id_result->num_rows > 0) {
 }
 .container {
     background: url('../P4.png')no-repeat center center;
-    background-size: 60% 107%; /* Scales the image to fit the container exactly */
+    background-size: 52% 107%; /* Scales the image to fit the container exactly */
     background-position: center;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
@@ -260,6 +260,37 @@ body {
                 display: none; /* Hide message */
             }
         }
+        @media screen and (max-width: 1120px) and (orientation: portrait) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #logout-tab {
+            background-color: rgb(205,60,60);
+            bottom: 22rem;
+            align-self: flex-start;
+            position: absolute;
+            border-radius: 1rem;
+            width: 90%;
+            margin-left: 18px;
+            color: #fff;
+    }
+    }
+    @media screen and (orientation: landscape) and (max-width: 1023px) {
+        #logout-tab {
+            background-color: rgb(205,60,60);
+            bottom: 1rem;
+            top: 300px;
+            left: 12.5px;
+            align-self: flex-start;
+            position: absolute;
+            border-radius: 1rem;
+            width: 90%;
+            margin-right: 5%;
+            color: #fff;
+        }
+}
 
         @media screen and (orientation: landscape) and (max-width: 1023px) {
             /* Show content in landscape mode for smaller devices */
@@ -273,7 +304,7 @@ body {
         @media screen and (orientation: landscape) and (max-width: 1024px) {
             .container {
             background: url('../P4.png')no-repeat center center;
-            background-size: 100% 100%; /* Scales the image to fit the container exactly */
+            background-size: 100% 90%; /* Scales the image to fit the container exactly */
             background-position: center;
             background-color: rgba(255, 255, 255, 1);
             border-radius: 20px;
@@ -439,17 +470,7 @@ select {
 <div class="whole-content">
 
 <div class="container">
-
-
-
-
 <div class="flex-container">
-    
-
-
-
-            
-   
     <table class="student-table">
     <form method="GET" action="" class="filter-form">
     <div class="form-group">
@@ -466,8 +487,8 @@ select {
                 </option>
             <?php } ?>
         </select></td></tr>
-    </div>
-    
+    </div>   
+
     <div class="form-group">
     <tr>
     <th><label for="semester">Semester:</label></th>
@@ -479,7 +500,6 @@ select {
             <?php } ?>
         </select></td></tr>
     </div>
-    
     
 </form>
         <tr>
