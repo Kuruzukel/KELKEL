@@ -145,6 +145,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         @media screen and (max-width: 1120px) and (orientation: portrait) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #logout-tab {
+            background-color: rgb(205,60,60);
+            bottom: 22rem;
+            align-self: flex-start;
+            position: absolute;
+            border-radius: 1rem;
+            width: 90%;
+            margin-left: 18px;
+            color: #fff;
+    }
+    }
+    @media screen and (orientation: landscape) and (max-width: 1023px) {
+        #logout-tab {
+            background-color: rgb(205,60,60);
+            bottom: 1rem;
+            top: 300px;
+            left: 12.5px;
+            align-self: flex-start;
+            position: absolute;
+            border-radius: 1rem;
+            width: 90%;
+            margin-right: 5%;
+            color: #fff;
+        }
+}
+        @media screen and (max-width: 1120px) and (orientation: portrait) {
             body {
 
                 
