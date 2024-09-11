@@ -171,7 +171,7 @@ include('session_detector2.php');
         }
         #logout-tab {
             background-color: rgb(255,60,60);
-            bottom: 1rem;
+            top: 21.5rem;
             align-self: flex-end;
             position: absolute;
             border-radius: 1rem;
@@ -183,7 +183,7 @@ include('session_detector2.php');
         .contents {
             min-height: 100%;
             width: 100%;
-            background-color: #fff;
+            background-color: rgba(0, 13, 140, 1);
             border-radius: 12px;
             padding-inline: 2rem;
             padding-block-start: 1rem;
@@ -260,8 +260,8 @@ header h3 {
         <img src="../P2.png" alt="Logo" class="logoadmin">
         <div class="line"></div>
             <a href="addash.php?page=grades" class="tab" id="grades-tab"><i class="fas fa-upload"></i> Grades Upload</a>
-            <a href="addash.php?page=password" class="tab" id="password-tab"><i class="fas fa-user-lock"></i> Student Accounts</a>
-
+            <a href="addash.php?page=accounts" class="tab" id="accounts-tab"><i class="fas fa-user"></i> Student Accounts</a>
+            <a href="addash.php?page=password" class="tab" id="password-tab"><i class="fas fa-user-lock"></i> Change My Password</a>
             <a href="admin_logout.php" class="tab" id="logout-tab"><i class="fas fa-sign-out-alt"></i> Logout</a>
 
         </div>
@@ -274,8 +274,11 @@ header h3 {
                 case 'grades':
                     include('gradesupload.php');
                     break;
-                case 'password':
+                case 'accounts':
                     include('studentsaccounts.php');
+                    break;
+                case 'password':
+                    include('changemypass.php');
                     break;
                 default:
                     include('gradesupload.php');

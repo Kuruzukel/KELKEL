@@ -17,15 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = $result->fetch_assoc();
         $_SESSION['username'] = $username;
 
-        $session_id = session_id();
+        if ($user['first_login'] == 0) {
+            header("Location: changeloginpassword.php");
+            exit;
+        } else {
+            
+            $session_id = session_id();
 
-        $insert_stmt = $connection->prepare("INSERT INTO session_list (user_id, session_id) VALUES (?, ?)");
-        $insert_stmt->bind_param("ss", $_SESSION['username'], $session_id);
-        $insert_stmt->execute();
-        $insert_stmt->close();
+            $insert_stmt = $connection->prepare("INSERT INTO session_list (user_id, session_id) VALUES (?, ?)");
+            $insert_stmt->bind_param("ss", $_SESSION['username'], $session_id);
+            $insert_stmt->execute();
+            $insert_stmt->close();
 
-        header("Location: Addash.php");
-        exit;
+            header("Location: Addash.php");
+            exit;
+        }
     } else {
         $error_message = "Invalid Username or Password.";
     }
@@ -35,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $connection->close();
 ?>
+
 
 <!DOCTYPE html>
 <html>
